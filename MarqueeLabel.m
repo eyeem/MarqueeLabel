@@ -74,7 +74,7 @@ NSString *const kMarqueeLabelShouldAnimateNotification = @"MarqueeLabelShouldAni
 @property (nonatomic, assign) NSTimeInterval lengthOfScroll;
 @property (nonatomic, assign) CGFloat rate;
 @property (nonatomic, assign, readonly) BOOL labelShouldScroll;
-@property (nonatomic, weak) UITapGestureRecognizer *tapRecognizer;
+@property (nonatomic, unsafe_unretained) UITapGestureRecognizer *tapRecognizer;
 @property (nonatomic, assign) CGRect homeLabelFrame;
 @property (nonatomic, assign) CGRect awayLabelFrame;
 @property (nonatomic, assign, readwrite) BOOL isPaused;
