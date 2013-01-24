@@ -237,8 +237,8 @@ NSString *const kMarqueeLabelShouldAnimateNotification = @"MarqueeLabelShouldAni
                                                       [[NSNotificationCenter defaultCenter] addObserverForName:@"UIViewAnimationDidStopNotification"
                                                                                                         object:nil
                                                                                                          queue:nil
-                                                                                                    usingBlock:^(NSNotification *notification){
-                                                                                                        if ([notification.userInfo objectForKey:@"delegate"] == self.window) {
+                                                                                                    usingBlock:^(NSNotification *innerNotification){
+                                                                                                        if ([innerNotification.userInfo objectForKey:@"delegate"] == self.window) {
                                                                                                             self.orientationWillChange = NO;
                                                                                                             [self restartLabel];
                                                                                                             
@@ -391,7 +391,7 @@ NSString *const kMarqueeLabelShouldAnimateNotification = @"MarqueeLabelShouldAni
         self.subLabel.text = self.labelText;
         
         // Calculate label size
-        CGSize expectedLabelSize = [self subLabelSize];
+        expectedLabelSize = [self subLabelSize];
         
         // Create frames
         self.homeLabelFrame = CGRectMake(self.fadeLength, 0, expectedLabelSize.width, self.bounds.size.height);
