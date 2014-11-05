@@ -269,7 +269,7 @@ NSString *const kMarqueeLabelShouldAnimateNotification = @"MarqueeLabelShouldAni
         if (CGSizeEqualToSize(maxSize, CGSizeZero)) {
             maxSize = CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX);
         }
-        CGSize minimizedLabelSize = [self.labelText sizeWithFont:self.subLabel.font
+        CGSize minimizedLabelSize = [self.labelText eye_sizeWithFont:self.subLabel.font
                                                constrainedToSize:maxSize
                                                    lineBreakMode:self.subLabel.lineBreakMode];
         // Adjust for fade length
@@ -321,14 +321,14 @@ NSString *const kMarqueeLabelShouldAnimateNotification = @"MarqueeLabelShouldAni
                 NSString *doubledText = [self.labelText stringByAppendingFormat:@"%@%@", self.continuousMarqueeSeparator, self.labelText];
                 
                 // Size of the new doubled label
-                CGSize expectedLabelSizeDoubled = [doubledText sizeWithFont:self.subLabel.font
+                CGSize expectedLabelSizeDoubled = [doubledText eye_sizeWithFont:self.subLabel.font
                                                           constrainedToSize:maximumLabelSize
                                                               lineBreakMode:self.subLabel.lineBreakMode];
                 
                 CGRect continuousLabelFrame = CGRectMake(self.fadeLength, 0, expectedLabelSizeDoubled.width, self.bounds.size.height);
                 
                 // Size of the label and the separator. This is the period of the translation to the left.
-                CGSize labelAndSeparatorSize = [[self.labelText stringByAppendingString:self.continuousMarqueeSeparator] sizeWithFont:self.subLabel.font
+                CGSize labelAndSeparatorSize = [[self.labelText stringByAppendingString:self.continuousMarqueeSeparator] eye_sizeWithFont:self.subLabel.font
                                                                                                                     constrainedToSize:maximumLabelSize
                                                                                                                         lineBreakMode:self.subLabel.lineBreakMode];
                 self.homeLabelFrame = continuousLabelFrame;
@@ -447,7 +447,7 @@ NSString *const kMarqueeLabelShouldAnimateNotification = @"MarqueeLabelShouldAni
 - (CGSize)subLabelSize {
     // Calculate label size
     CGSize maximumLabelSize = CGSizeMake(CGFLOAT_MAX, self.frame.size.height);
-    CGSize expectedLabelSize = [self.labelText sizeWithFont:self.subLabel.font
+    CGSize expectedLabelSize = [self.labelText eye_sizeWithFont:self.subLabel.font
                                           constrainedToSize:maximumLabelSize
                                               lineBreakMode:self.subLabel.lineBreakMode];
     return expectedLabelSize;
